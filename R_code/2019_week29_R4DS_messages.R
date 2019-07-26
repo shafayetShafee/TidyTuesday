@@ -1,6 +1,4 @@
-
 # LIBRARY -----------------------------------------------------------------
-
 library(tidyverse)
 library(ggrepel)
 library(lubridate)
@@ -13,7 +11,6 @@ font_add_google("Roboto Mono","Roboto Mono")
 
 # DATA --------------------------------------------------------------------
 
-
 r4ds_members <- readr::read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-07-16/r4ds_members.csv") %>% 
   mutate(
     date = ymd(date),
@@ -21,6 +18,7 @@ r4ds_members <- readr::read_csv("https://raw.githubusercontent.com/rfordatascien
     month = factor(month(date, label = TRUE), levels = month.abb),
     weekday = factor(wday(date, label = TRUE))
   )
+
 
 # WEEK-day  activity ----------------------------------------------------------------
 
@@ -38,8 +36,7 @@ p1 <- ggplot(r4ds_members)+
   guides(fill = guide_legend(reverse = T), color = guide_legend(reverse = T))+
   theme(legend.position = "top",
         panel.spacing.y = unit(0.5,"lines"),
-        text = element_text(family = "Roboto Mono")
-        )
+        text = element_text(family = "Roboto Mono"))
 
 
 # DAILY-MESSSAGES ---------------------------------------------------------
@@ -62,8 +59,7 @@ p2 <- ggplot(r4ds_members)+
   theme(legend.position = "top",
         panel.spacing.y = unit(0.5,"lines"),
         text = element_text(family = "Roboto Mono"),
-        legend.spacing.x = unit(1, "lines")
-  )
+        legend.spacing.x = unit(1, "lines"))
 
 
 # Waffle-chart ------------------------------------------------------------
@@ -83,13 +79,11 @@ messages <- r4ds_members %>%
 
 levels <- messages %>% mutate(date = paste(month,"\n", year)) %>% pull(date) %>% unique()
 
-
 mess <- gather(messages, key = "message", value = "number", -year, -month,-total,-date) %>% 
   ungroup() %>% 
   mutate(date = paste(month,"\n",year),
          date = factor(date, levels = levels))
 
-windows()
 p3 <- ggplot(data = mess,aes(fill = message, values = number))+
   geom_waffle(color = "white",size = 0.10, n_rows = 10, flip = TRUE, make_proportional = TRUE)+
   facet_wrap(~date, nrow = 1, strip.position = "bottom")+
@@ -129,7 +123,6 @@ p0 <- ggplot()+
   theme(text = element_text(family = "Roboto Mono"),
         plot.title = element_text(face = "bold", size = 24),
         plot.subtitle = element_text(size = 14))
-
 
 
 # ASSEMBLE ----------------------------------------------------------------
