@@ -4,4 +4,4 @@ Feedbacks are highly appreciated and welcomed via [@shafayet_shafee](https://twi
 
 
 ## 2019-week30 :airplane: vs :bird: Wildlife Strikes by [FAA](https://wildlife.faa.gov/)
-
+![](https://github.com/shafayetShafee/TidyTuesday/blob/master/Plots/wildlife_strikes-01.png)
