@@ -1,6 +1,4 @@
-
 # PACKAGES ----------------------------------------------------------------
-
 library(tidyverse)
 library(ggforce)
 library(lubridate)
@@ -66,9 +64,7 @@ total <- ggplot(data = r4ds_members, aes(date,total_membership))+
   labs(
     x = NULL, subtitle = "\nTotal Membership", y  = "Number of Members", 
      title = "R4DS Online Learning Community Member's Stats"
-    
-  )
-
+    )
 
 # Proportion --------------------------------------------------------------
 
@@ -104,11 +100,8 @@ prop <- ggplot(r4ds_members, aes(date, daily_active_members/total_membership))+
        caption = "ViZ_by: @shafayet_shafee")
   
 
-
 # Desccription ------------------------------------------------------------
-windows()
-showtext_auto()
-
+                     
 description <- ggplot()+
   xlim(-1,1)+
   ylim(-1,1)+
@@ -135,7 +128,6 @@ description <- ggplot()+
     panel.background = element_rect(fill = "#f5f1bc", color = "#f5f1bc"),
     plot.background = element_rect(fill = "#f5f1bc", color = "#f5f1bc")
     )
-
 
 
 # patch-up ----------------------------------------------------------------
