@@ -16,7 +16,9 @@ meteorites <- meteorites_raw %>%
   select(name,mass,fall, year,decade, lat,long) %>% 
   drop_na()
 
-
+# adding Google fonts to showtext database
+font_add_google("Merriweather","Merriweather")
+font_add_google("Roboto Mono","Roboto Mono")
 
 # Line-plot ---------------------------------------------------------------
 
@@ -90,8 +92,10 @@ bar_plot <- meteorites %>%
         legend.text = element_text(size = 13),
         legend.title = element_text(angle = 90, hjust = 0.5, vjust = 0.5,size = 14)
         )+
-  labs(y = "\nName and Mass of 16 Most heavy Meteorites (fallen) from 2001 to 2010          ",x= "",
-       title = "", subtitle = "")
+  labs(y = "\nName and Mass of 16 Most heavy Meteorites (fallen) from 2001 to 2010          ",
+       x= "",
+       title = "", 
+       subtitle = "")
 
 
 
@@ -104,9 +108,9 @@ title <- ggplot()+
        title = "\nFallen Meteorites Across the World Since 1750",
        subtitle = glue::glue("\nHere considered only those meteorites- which were seen to fall" ," from the sky and tracked down successfully\n\n"))+
   theme(
+    line = element_blank(),
     plot.title = element_text(family = "Merriweather", size = 35,color = "white"),
     plot.subtitle = element_text(family = "Roboto Mono", size = 25, color = "grey98"),
-    line = element_blank(),
     panel.background = element_rect(fill = "grey20",color = "grey20"),
     plot.background = element_rect(fill = "grey20",color = "grey20"),
     panel.border = element_blank(),
@@ -117,8 +121,8 @@ caption <- ggplot()+
   labs(x = NULL,y = NULL,
        caption = "ViZ by: @Shafayet_shafee  | Data-Source: NASA")+
   theme(line = element_blank(),
-        panel.background = element_rect(fill = "grey20",color = "grey20"),
         plot.background = element_rect(fill = "grey20",color = "grey20"),
+        panel.background = element_rect(fill = "grey20",color = "grey20"),
         panel.border = element_rect(fill = "grey20", color = "grey20"),
         axis.text = element_blank(),
         plot.caption = element_text(size = 8, family = "Roboto Mono", color = "white"))
