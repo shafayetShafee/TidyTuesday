@@ -43,32 +43,33 @@ chick_plot <- media_franchises_year %>%
   mutate(franchise = fct_reorder(franchise,total)) %>% 
   ggplot(aes(franchise, revenue, fill=revenue_category))+
   geom_chicklet(width = 0.75)+
-  geom_text(aes(x = franchise, y = total, label = paste0(" $ ",as.character(round(total,1))," B"), hjust = 0), size = 3, color = "grey45")+
+  geom_text(aes(x = franchise, y = total, label = paste0(" $ ",as.character(round(total,1))," B"), hjust = 0), size = 5, color = "grey45")+
   theme(legend.position = "right")+
   coord_flip()+
-  labs(x =NULL, y = " ",
+  labs(x =" ", y = " ",
        title ="Top Ten Highest Grossing Media Franchises",
-       subtitle =NULL)+
+       subtitle ="")+
   scale_y_continuous(breaks = c(0,20,40,60,80),labels = function(x)paste0("$",x,"B"), limits = c(0,95))+
   ggthemes::scale_fill_tableau(name = "Revenue Earned from:")+
   guides(fill = guide_legend(title.position = "top"))+
   theme(
+    text = element_text(family = "B612 Mono"),
     plot.background = element_rect(fill = "#d7ddf7", color = "#d7ddf7"),
     panel.background = element_rect(fill = "#d7ddf7", color = "#d7ddf7"),
+    plot.title = element_text(size = 16, face = "italic", color = "grey5", family = "B612 Mono"),
+    panel.border = element_blank(),
     panel.grid = element_blank(),
     panel.grid.major.x = element_line(linetype = 1, color = "grey50"),
-    axis.text = element_text(color = "grey10", family = "B612 Mono"),
-    axis.title.y = element_text(color = "grey5", family = "B612 Mono", size=7),
+    axis.text = element_text(color = "black", family = "B612 Mono", size = 13),
     axis.ticks.length.y =unit(0, "mm") ,
+    axis.title.y = element_text(color = "black", family = "B612 Mono", size=14),
+    axis.text.y = element_text(hjust = 1, size = 14),
     legend.background =  element_rect(fill = "#d7ddf7", color = "#d7ddf7"),
     legend.key = element_rect(color = "transparent", fill = "transparent"),
-    text = element_text(family = "B612 Mono"),
-    axis.text.y = element_text(hjust = 1),
+    legend.key.size = unit(2,"lines"),
     legend.spacing.x = unit(0.7,"lines"),
-    legend.title = element_text(face = "italic", size = 10),
-    legend.text = element_text(color = "grey10",size=8),
-    plot.title = element_text(size = 11, face = "italic", color = "grey10", family = "B612 Mono"),
-    panel.border = element_rect(fill = NA, color=NA)
+    legend.title = element_text(face = "italic", size = 14),
+    legend.text = element_text(color = "grey2",size=12)
   )
 
 
@@ -81,18 +82,19 @@ lolipop <- media_franchises_year %>%
   ungroup() %>% 
   mutate(original_media = fct_reorder(original_media, g)) %>% 
   ggplot(aes(original_media, g, color = original_media))+
-  geom_point(size = 3)+
-  geom_segment(aes(x = original_media, xend = original_media, y = 0, yend = g))+
+  geom_point(size = 4)+
+  geom_segment(aes(x = original_media, xend = original_media, y = 0, yend = g),lwd = 1.8)+
   coord_flip()+
-  theme(legend.position = "none")+
-  scale_y_continuous(expand =c(0,0) ,label = function(x)paste0("$",x," B"), limits = c(0,370))+
-  labs(y = "Net Revenues",
-       title = "Original Sources of franchises and Net revenue",x = "")+
+  scale_y_continuous(expand =c(0,0) ,label = function(x)paste0("$",x," B"), limits = c(0,340))+
+  labs(y = "\nNet Revenues",
+       title = "\nOriginal Sources of franchises and Net revenue",x = "")+
   theme(text = element_text(family = "B612 Mono"),
-        axis.title = element_text(family=  "B612 Mono", size = 10),
-        axis.text.y = element_text(family = "B612 Mono", color = "grey20"),
-        axis.text.x = element_text(family = "B612 Mono", size =10,color = "grey20"),
-        plot.title = element_text(family = "B612 Mono", face = "italic",size = 10, color = "grey10")
+        axis.title = element_text(family=  "B612 Mono", size = 14, color = "black"),
+        axis.text.y = element_text(family = "B612 Mono", color = "black", size = 13),
+        axis.text.x = element_text(family = "B612 Mono", size =12,color = "black"),
+        legend.position = "none",
+        panel.grid.major.y = element_line(color = "grey50", linetype = 2),
+        plot.title = element_text(family = "B612 Mono", face = "italic",size = 16, color = "black")
   )
 
 
@@ -109,14 +111,18 @@ Media_cat <- media_franchises_year %>%
   ungroup() %>% distinct(revenue_category,decade, cat_t,decade_total) %>% 
   ggplot(aes(x = decade, y = cat_t, fill = revenue_category))+
   geom_chicklet()+
-  geom_text(aes(x = decade, y = decade_total, label = paste0(" $ ",as.character(round(decade_total,1))," B"), hjust = 0), size = 3, color = "grey45")+
+  geom_text(aes(x = decade, y = decade_total, label = paste0(" $ ",as.character(round(decade_total,1))," B"), hjust = 0), size = 5, color = "grey45")+
   coord_flip()+
   scale_x_continuous(breaks = seq(1920,2010,10))+
   scale_y_continuous(expand=c(0.005,0.005),label = function(x)paste0("$",x," B"), limits = c(0,390))+
   theme(legend.position = "none",
         panel.grid.major.x = element_line(color = "grey50", linetype = 2),
-        plot.title = element_text(family = "B612 Mono",size = 11, color = "grey10"),
-        plot.subtitle = element_text(family = "B612 Mono",size = 9, color = "grey30")
+        plot.title = element_text(size = 16, face = "italic", color = "grey5", family = "B612 Mono"),
+        plot.subtitle = element_text(family = "B612 Mono",size = 13, color = "grey5"),
+        axis.text = element_text(color = "black", family = "B612 Mono", size = 13),
+        axis.ticks.length.y =unit(0, "mm") ,
+        axis.title.y = element_text(color = "black", family = "B612 Mono", size=14),
+        axis.text.y = element_text(hjust = 1, size = 14)
   )+
   scale_fill_tableau()+
   labs(x = NULL, y = " ",
@@ -137,14 +143,19 @@ low <- media_franchises_year%>%
   ggplot(aes(franchise, total, fill = cat))+
   geom_chicklet()+
   theme(text = element_text(family = "B612 Mono"),
-        legend.position = "none",
         panel.grid.major.x = element_line(color = "grey50", linetype = 2),
-        plot.title = element_text(family = "B612 Mono", face = "italic",size = 12, color = "grey10")
+        plot.title = element_text(size = 16, face = "italic", color = "grey5", family = "B612 Mono"),
+        plot.subtitle = element_text(family = "B612 Mono",size = 13, color = "grey5"),
+        axis.text = element_text(color = "black", family = "B612 Mono", size = 13),
+        axis.ticks.length.y =unit(0, "mm") ,
+        axis.title.y = element_text(color = "black", family = "B612 Mono", size=14),
+        axis.text.y = element_text(hjust = 1, size = 14),
+        legend.position = "none",
   )+
   coord_flip()+
   labs(x = NULL, y = NULL, 
-       title = "Lowest Grossing Media Franchises")+
-  scale_y_continuous(labels = function(x)paste0("$",x," B"))+
+       title = "\nLowest Grossing Media Franchises")+
+  scale_y_continuous(labels = function(x)paste0("$",x,"B"))+
   scale_fill_scico_d(palette = "imola")
 
 # Setting up a theme ------------------------------------------------------
@@ -162,25 +173,24 @@ theme_set(theme_grey() + my_theme)
 # Header and caption ------------------------------------------------------
 
 header <- ggplot()+
-  labs(title = "Media Franchise (1924-2013)",
-       subtitle ="How do different media franchises stack up with their revenue streams?\n\n")+
-  theme(plot.title = element_text(family = "B612 Mono", face = "bold",size = 25, color = "grey10"),
-        plot.subtitle = element_text(family = "B612 Mono", face = "italic",size = 16, color = "grey10"))
+  labs(title = " Media Franchise (1924-2013)",
+       subtitle =" How do different media franchises stack up with their revenue streams?")+
+  theme(plot.title = element_text(family = "B612 Mono", face = "bold",size = 37, color = "grey10"),
+        plot.subtitle = element_text(family = "B612 Mono", face = "italic",size = 25, color = "grey10"),
+        panel.border = element_blank())
 
 caption <- ggplot()+
   labs(x = NULL,y = NULL,
        caption = "Visualization by Shafayet_shafee  | Data-Source: Wikipedia")+
   theme(line = element_blank(),
-        panel.background = element_rect(fill=NA),
-        plot.background = element_rect(color = NA),
         panel.border = element_blank(),
         axis.text = element_blank(),
-        plot.caption = element_text(size = 8, family = "B612 Mono"))
+        plot.caption = element_text(size = 10, family = "B612 Mono", color = "black"))
 
-
+null_plot <- ggplot()
 # Assemble ----------------------------------------------------------------
 
-png("Media-franchise.png", width = 2800, height = 1350, res = 100, bg = "white")
+png("Media-franchise-01.png", width = 2800, height = 1300, res = 100, bg = "white")
 
 showtext_auto()
 
@@ -189,20 +199,19 @@ grid.arrange(
   chick_plot,
   Media_cat,
   lolipop,
+  null_plot,
   low,
   caption,
-  heights = c(9,45,42,4),
-  widths = c(60,40),
+  heights = c(15,40,40,4),
+  widths = c(40,10,5,5,40),
   layout_matrix = rbind(
-    c(1,1),
-    c(2,3),
-    c(4,5),
-    c(6,6)
-  )
-  
-)
+    c(1,1,1,1,1),
+    c(2,2,2,3,3),
+    c(4,4,5,6,6),
+    c(7,7,7,7,7)
+  ))
 
-
+#dev.off()
 
 # TOP 5 Owners ------------------------------------------------------------
 
@@ -258,10 +267,13 @@ point_plot <- media_franchises_year %>%
         axis.text.x = element_text(family = "B612 Mono", size =10, face = "bold", color = "grey20"),
         axis.title = element_text(family = "B612 Mono", color = "grey20", size = 11),
         axis.ticks.x = element_blank(),
-        title = element_text(family = "B612 Mono", face = "bold",size = 14, color = "grey10")
+        plot.title= element_text(family = "B612 Mono", face = "bold",size = 16, color = "grey10"),
+        plot.caption = element_text(family = "B612 Mono", size = 8, color = "grey30")
+      
   )+
   labs(x = "\nOwners and their total revenue earned ", y = "Revenue from different revenue category\n",
        title = "              Top Five Highest Grossing Franchises Owners",
-       subtitle = "")
+       subtitle = "",
+       caption =  "Visualization by Shafayet_shafee  | Data-Source: Wikipedia")
 
-ggsave("media-point.png", dpi=100)
+ggsave("media-point.png", dpi=100, height = 7, width=15)
