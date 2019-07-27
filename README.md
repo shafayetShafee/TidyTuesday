@@ -4,7 +4,7 @@ Feedbacks are highly appreciated and welcomed via [@shafayet_shafee](https://twi
 
 ## 2019-week24
 ## :earth_asia: :stars: Meteorites by [NASA](https://data.nasa.gov/Space-Science/Meteorite-Landings/gh4g-9sfh/data)
-![Image of Meteorites landing]()
+![Image of Meteorites landing](https://github.com/shafayetShafee/TidyTuesday/blob/master/Plots/Fallen_Meteorites.png)
 
 ## 2019-week27 
 ## :movie_camera: :tv::moneybag: Media Franchise Powerhouses by [WikipediA](https://en.wikipedia.org/wiki/List_of_highest-grossing_media_franchises)
