@@ -19,3 +19,7 @@ Feedbacks are highly appreciated and welcomed via [@shafayet_shafee](https://twi
 ## 2019-week30 
 ## :airplane: vs :bird: Wildlife Strikes by [FAA](https://wildlife.faa.gov/)
 ![Wildlife-strikes](https://github.com/shafayetShafee/TidyTuesday/blob/master/Plots/wildlife_strikes-01.png)
+
+## 2019-week31
+## :video_game: Video Games Dataset by [Liza Wood](https://cruiseofdimensionality.home.blog/2019/07/24/pc-video-games-we-still-play/)
+![Video-games](https://github.com/shafayetShafee/TidyTuesday/blob/master/Plots/Video%20Games.png)
