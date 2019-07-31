@@ -22,4 +22,4 @@ Feedbacks are highly appreciated and welcomed via [@shafayet_shafee](https://twi
 
 ## 2019-week31
 ## :video_game: Video Games Dataset by [Liza Wood](https://cruiseofdimensionality.home.blog/2019/07/24/pc-video-games-we-still-play/)
-![Video-games]()
+![Video-games](https://github.com/shafayetShafee/TidyTuesday/blob/master/Plots/Video%20Games.png)
